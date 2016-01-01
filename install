@@ -1,0 +1,24 @@
+#!/bin/bash
+# Just tested on vim 7.4+
+trap exit ERR
+cp vimrc ~/.vimrc
+cp vimrc.vundle ~/.vimrc.vundle
+mkdir -p ~/.vim/bundle
+cd ~/.vim/bundle
+git clone https://github.com/gmarik/Vundle.vim.git
+git clone https://github.com/tpope/vim-fugitive.git
+git clone https://github.com/Valloric/YouCompleteMe.git
+git clone https://github.com/kien/ctrlp.vim.git
+git clone https://github.com/scrooloose/nerdtree.git
+git clone https://github.com/bling/vim-airline.git
+git clone https://github.com/majutsushi/tagbar.git
+git clone https://github.com/rking/ag.vim.git
+git clone https://github.com/Shougo/vimproc.vim.git
+git clone https://github.com/Shougo/vimshell.vim.git
+git clone https://github.com/fatih/vim-go.git
+git clone https://github.com/scrooloose/syntastic.git
+#vim +PluginInstall +qall
+
+(cd ~/.vim/bundle/YouCompleteMe/ && git submodule update --init --recursive \
+    && ./install.py --clang-completer --gocode-completer)
+(cd ~/.vim/bundle/vimproc.vim/ && make)
