@@ -17,6 +17,7 @@ git clone https://github.com/Shougo/vimproc.vim.git
 git clone https://github.com/Shougo/vimshell.vim.git
 git clone https://github.com/fatih/vim-go.git
 git clone https://github.com/scrooloose/syntastic.git
+git clone https://github.com/rust-lang/rust.vim.git
 #vim +PluginInstall +qall
 
 (cd ~/.vim/bundle/YouCompleteMe/ && git submodule update --init --recursive \
