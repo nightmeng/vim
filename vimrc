@@ -9,6 +9,7 @@ set shiftwidth=4
 set tabstop=4
 set smartindent
 set smartcase
+set cino=g0
 
 syntax on
 filetype on
