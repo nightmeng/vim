@@ -10,11 +10,11 @@ set tabstop=4
 set smartindent
 set smartcase
 set cino=g0
+set backspace=2
 
 syntax on
 filetype on
 filetype indent on
-
 
 " remember the cursor last open
 "autocmd BufReadPost *
