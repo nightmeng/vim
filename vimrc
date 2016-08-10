@@ -17,10 +17,10 @@ filetype on
 filetype indent on
 
 " remember the cursor last open
-"autocmd BufReadPost *
-"  \ if line("'\"") > 0 && line ("'\"") <= line("$") |
-"  \   exe "normal! g'\"" |
-"  \ endif
+autocmd BufReadPost *
+  \ if line("'\"") > 0 && line ("'\"") <= line("$") |
+  \   exe "normal! g'\"" |
+  \ endif
 
 let mapleader = ";"
 """" third party plugins """"

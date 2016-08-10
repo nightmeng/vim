@@ -22,5 +22,5 @@ git clone https://github.com/rdnetto/YCM-Generator.git
 #vim +PluginInstall +qall
 
 (cd ~/.vim/bundle/YouCompleteMe/ && git submodule update --init --recursive \
-    && ./install.py --clang-completer --gocode-completer --racer-completer)
+    && ./install.py --gocode-completer --racer-completer)
 (cd ~/.vim/bundle/vimproc.vim/ && make)
