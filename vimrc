@@ -1,4 +1,4 @@
-source ~/.vimrc.vundle
+source ~/.vim/bundle/vimrc.vundle
 
 set nu
 set hlsearch
@@ -11,6 +11,8 @@ set smartindent
 set smartcase
 set cino=g0
 set backspace=2
+
+colorscheme molokai
 
 syntax on
 filetype on
@@ -55,3 +57,28 @@ nnoremap <leader>d :YcmCompleter GoToDefinitionElseDeclaration<CR>
 nmap <Leader>b :GoBuild<CR>
 nmap <Leader>r :GoRun<CR>
 nmap <Leader>i :GoImport<CR>
+
+"-----------------cscopex-----------------
+let g:cscope_silent=1                                     " disable toggle
+"messages for database updated"
+let g:cscope_interested_files='\.c$\|\.cpp$\|\.h$\|\.hpp$\|\.cc'
+let g:cscope_auto_update=1
+
+au bufread,bufnewfile *.c let g:ycm_global_ycm_extra_conf = '~/.vim/ycm/c/.ycm_extra_conf.py'
+au bufread,bufnewfile *.h,*.hpp,*.cpp,*.cc,*.cxx let g:ycm_global_ycm_extra_conf = '~/.vim/ycm/cpp/.ycm_extra_conf.py'
+if filereadable(".ycm_extra_conf.py")
+    let g:ycm_global_ycm_extra_conf = './.ycm_extra_conf.py'
+endif
+
+"-----------------syntastic---------------
+let g:syntastic_enable_signs=1
+let g:syntastic_error_symbol='!!'
+let g:syntastic_style_error_symbol='!!'
+let g:syntastic_warning_symbol='??'
+let g:syntastic_style_warning_symbol='??'
+let g:syntastic_always_populate_loc_list=1
+let g:syntastic_auto_loc_list=1
+let g:syntastic_check_on_open=1
+let g:syntastic_check_on_wq=1
+let g:syntastic_aggregate_errors=1
+let g:syntastic_go_checkers=['go']

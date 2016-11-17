@@ -1,11 +1,16 @@
 #!/bin/bash
 # Just tested on vim 7.4+
 trap exit ERR
+
+rm -rf ~/.vim
+rm -rf ~/.vimrc
+
 cp vimrc ~/.vimrc
-cp vimrc.vundle ~/.vimrc.vundle
-mkdir -p ~/.vim/bundle
+cp -rf vim ~/.vim
+
 cd ~/.vim/bundle
 git clone https://github.com/gmarik/Vundle.vim.git
+git clone https://github.com/flazz/vim-colorschemes.git
 git clone https://github.com/tpope/vim-fugitive.git
 git clone https://github.com/Valloric/YouCompleteMe.git
 git clone https://github.com/kien/ctrlp.vim.git
@@ -22,5 +27,5 @@ git clone https://github.com/rdnetto/YCM-Generator.git
 #vim +PluginInstall +qall
 
 (cd ~/.vim/bundle/YouCompleteMe/ && git submodule update --init --recursive \
-    && ./install.py --gocode-completer --racer-completer)
+    && ./install.py --all)
 (cd ~/.vim/bundle/vimproc.vim/ && make)
