@@ -58,6 +58,9 @@ nmap <Leader>b :GoBuild<CR>
 nmap <Leader>r :GoRun<CR>
 nmap <Leader>i :GoImport<CR>
 
+"-----------------YCM--------------------
+let g:ycm_server_python_interpreter='/usr/bin/python'
+
 "-----------------cscopex-----------------
 let g:cscope_silent=1                                     " disable toggle messages for database updated
 let g:cscope_interested_files='\.c$\|\.cpp$\|\.h$\|\.hpp$\|\.cc'
