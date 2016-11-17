@@ -70,6 +70,9 @@ if filereadable(".ycm_extra_conf.py")
     let g:ycm_global_ycm_extra_conf = './.ycm_extra_conf.py'
 endif
 
+"------------------gd----------------------
+au filetype c,cpp,objc,objcpp,cs nnoremap gd :YcmCompleter GoToDefinitionElseDeclaration<cr>
+
 "-----------------syntastic---------------
 let g:syntastic_enable_signs=1
 let g:syntastic_error_symbol='!!'
