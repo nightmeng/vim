@@ -82,3 +82,7 @@ let g:syntastic_check_on_open=1
 let g:syntastic_check_on_wq=1
 let g:syntastic_aggregate_errors=1
 let g:syntastic_go_checkers=['go']
+
+"----------------vim-go-----------------
+let g:go_template_autocreate=0  " disable template auto create"
+
