@@ -59,19 +59,9 @@ nmap <Leader>r :GoRun<CR>
 nmap <Leader>i :GoImport<CR>
 
 "-----------------cscopex-----------------
-let g:cscope_silent=1                                     " disable toggle
-"messages for database updated"
+let g:cscope_silent=1                                     " disable toggle messages for database updated
 let g:cscope_interested_files='\.c$\|\.cpp$\|\.h$\|\.hpp$\|\.cc'
 let g:cscope_auto_update=1
-
-au bufread,bufnewfile *.c let g:ycm_global_ycm_extra_conf = '~/.vim/ycm/c/.ycm_extra_conf.py'
-au bufread,bufnewfile *.h,*.hpp,*.cpp,*.cc,*.cxx let g:ycm_global_ycm_extra_conf = '~/.vim/ycm/cpp/.ycm_extra_conf.py'
-if filereadable(".ycm_extra_conf.py")
-    let g:ycm_global_ycm_extra_conf = './.ycm_extra_conf.py'
-endif
-
-"------------------gd----------------------
-au filetype c,cpp,objc,objcpp,cs nnoremap gd :YcmCompleter GoToDefinitionElseDeclaration<cr>
 
 "-----------------syntastic---------------
 let g:syntastic_enable_signs=1
@@ -84,8 +74,30 @@ let g:syntastic_auto_loc_list=1
 let g:syntastic_check_on_open=1
 let g:syntastic_check_on_wq=1
 let g:syntastic_aggregate_errors=1
-let g:syntastic_go_checkers=['go']
+let g:syntastic_go_checkers = ['go', 'golint', 'govet', 'errcheck']
 
 "----------------vim-go-----------------
 let g:go_template_autocreate=0  " disable template auto create"
+let g:go_highlight_array_whitespace_error=1
+let g:go_highlight_chan_whitespace_error=1
+let g:go_highlight_extra_types=1
+let g:go_highlight_space_tab_error=1
+let g:go_highlight_trailing_whitespace_error=1
+let g:go_highlight_generate_tags=1
+let g:go_highlight_string_spellcheck=1
+let g:go_highlight_format_strings=1
 
+let g:go_highlight_functions=1
+let g:go_highlight_methods=1
+let g:go_highlight_fields=1
+let g:go_highlight_types=1
+let g:go_highlight_operators=1
+let g:go_highlight_build_constraints=1
+
+au bufread,bufnewfile *.c let g:ycm_global_ycm_extra_conf = '~/.vim/ycm/c/.ycm_extra_conf.py'
+au bufread,bufnewfile *.h,*.hpp,*.cpp,*.cc,*.cxx let g:ycm_global_ycm_extra_conf = '~/.vim/ycm/cpp/.ycm_extra_conf.py'
+if filereadable(".ycm_extra_conf.py")
+    let g:ycm_global_ycm_extra_conf = './.ycm_extra_conf.py'
+endif
+
+au filetype c,cpp,objc,objcpp,cs nnoremap gd :YcmCompleter GoToDefinitionElseDeclaration<cr>
