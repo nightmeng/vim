@@ -59,12 +59,24 @@ nmap <Leader>r :GoRun<CR>
 nmap <Leader>i :GoImport<CR>
 
 "-----------------YCM--------------------
-let g:ycm_server_python_interpreter='/usr/bin/python'
+"let g:ycm_server_python_interpreter='/usr/bin/python' " only for ubuntu 16.04
 
 "-----------------cscopex-----------------
 let g:cscope_silent=1                                     " disable toggle messages for database updated
 let g:cscope_interested_files='\.c$\|\.cpp$\|\.h$\|\.hpp$\|\.cc'
 let g:cscope_auto_update=1
+
+"--------------cscope-----------------
+"" Find in interactive
+nnoremap <leader>fa :call CscopeFindInteractive(expand('<cword>'))<cr>
+" s: Find this C symbol
+nnoremap <leader>fs :call CscopeFind('s', expand('<cword>'))<cr>
+" " t: Find this text string
+nnoremap <leader>ft :call CscopeFind('t', expand('<cword>'))<cr>
+" " t: Find this text string
+nnoremap <leader>fc :call CscopeFind('c', expand('<cword>'))<cr>
+
+nnoremap <silent>s :call QuickFixToggle()<cr>
 
 "-----------------syntastic---------------
 let g:syntastic_enable_signs=1
