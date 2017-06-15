@@ -29,7 +29,7 @@ let mapleader = ";"
 " nerdtree
 nmap <Leader>f :NERDTreeToggle<CR>
 " airline
-"set laststatus=2
+set laststatus=2
 let g:airline#extensions#tabline#enabled = 1
 nmap <tab> :bn<CR>
 nmap <S-tab> :bp<CR>
@@ -63,8 +63,10 @@ nmap <Leader>i :GoImport<CR>
 
 "-----------------cscopex-----------------
 let g:cscope_silent=1                                     " disable toggle messages for database updated
-let g:cscope_interested_files='\.c$\|\.cpp$\|\.h$\|\.hpp$\|\.cc'
+"let g:cscope_interested_files='\.c$\|\.cpp$\|\.h$\|\.hpp$\|\.cc'
+let g:cscope_interested_files = '\.c$\|\.cpp$\|\.h$\|\.hpp$\|\.cc$\|\.go'
 let g:cscope_auto_update=1
+let g:cscope_preload_path='.'
 
 "--------------cscope-----------------
 "" Find in interactive
