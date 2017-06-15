@@ -2,30 +2,62 @@
 # Just tested on vim 7.4+
 trap exit ERR
 
-mv -f ~/.vim ~/.vim.old
-mv -f ~/.vimrc ~/.vimrc.old
+mkdir -p ~/.vim/bundle
+mkdir -p ~/.vim/colors
+mkdir -p ~/.vim/ycm
 
-cp vimrc ~/.vimrc
-cp -rf vim ~/.vim
+# $1 -> file name to install
+install_file() {
+    dst="$HOME/.$1"
+
+    if [ -f "$dst" ]; then
+        mv "$dst" "$dst.old"
+    fi
+
+    cp $1 $dst
+}
+
+install_file vim/bundle/vimrc.vundle
+install_file vim/colors/molokai_dark.vim
+install_file vim/colors/solarized.vim
+install_file vim/ycm/c/.ycm_extra_conf.py
+install_file vim/ycm/cpp/.ycm_extra_conf.py
+install_file vimrc
+
+# $1 -> git address
+update_plugin() {
+    lk=$1
+    dr=`echo ${lk%.*} | awk -F "\/" '{print $NF}'`
+
+    echo "update $dr..."
+
+    if [ -d "$dr" ]; then
+        cd "$dr"
+        git pull
+        cd - >/dev/null 2>&1
+    else
+        git clone "$lk"
+    fi
+}
 
 cd ~/.vim/bundle
-git clone https://github.com/gmarik/Vundle.vim.git
-git clone https://github.com/flazz/vim-colorschemes.git
-git clone https://github.com/tpope/vim-fugitive.git
-git clone https://github.com/Valloric/YouCompleteMe.git
-git clone https://github.com/kien/ctrlp.vim.git
-git clone https://github.com/scrooloose/nerdtree.git
-git clone https://github.com/bling/vim-airline.git
-git clone https://github.com/majutsushi/tagbar.git
-git clone https://github.com/rking/ag.vim.git
-git clone https://github.com/Shougo/vimproc.vim.git
-git clone https://github.com/Shougo/vimshell.vim.git
-git clone https://github.com/fatih/vim-go.git
-git clone https://github.com/rust-lang/rust.vim.git
-git clone https://github.com/rdnetto/YCM-Generator.git
-git clone https://github.com/octol/vim-cpp-enhanced-highlight.git
-git clone https://github.com/adwpc/cscopex.git
-git clone https://github.com/vim-syntastic/syntastic.git
+update_plugin https://github.com/gmarik/Vundle.vim.git
+update_plugin https://github.com/flazz/vim-colorschemes.git
+update_plugin https://github.com/tpope/vim-fugitive.git
+update_plugin https://github.com/Valloric/YouCompleteMe.git
+update_plugin https://github.com/kien/ctrlp.vim.git
+update_plugin https://github.com/scrooloose/nerdtree.git
+update_plugin https://github.com/bling/vim-airline.git
+update_plugin https://github.com/majutsushi/tagbar.git
+update_plugin https://github.com/rking/ag.vim.git
+update_plugin https://github.com/Shougo/vimproc.vim.git
+update_plugin https://github.com/Shougo/vimshell.vim.git
+update_plugin https://github.com/fatih/vim-go.git
+update_plugin https://github.com/rust-lang/rust.vim.git
+update_plugin https://github.com/rdnetto/YCM-Generator.git
+update_plugin https://github.com/octol/vim-cpp-enhanced-highlight.git
+update_plugin https://github.com/adwpc/cscopex.git
+update_plugin https://github.com/vim-syntastic/syntastic.git
 
 # Install plugins.
 vim -u ~/.vimrc -c ":PluginInstall" -c ":q" -c ":q"
