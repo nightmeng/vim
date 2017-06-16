@@ -12,7 +12,7 @@ set smartcase
 set cino=g0
 set backspace=2
 
-colorscheme molokai_dark
+colorscheme molokai
 
 syntax on
 filetype on

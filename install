@@ -4,7 +4,8 @@ trap exit ERR
 
 mkdir -p ~/.vim/bundle
 mkdir -p ~/.vim/colors
-mkdir -p ~/.vim/ycm
+mkdir -p ~/.vim/ycm/c
+mkdir -p ~/.vim/ycm/cpp
 
 # $1 -> file name to install
 install_file() {
