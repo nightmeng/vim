@@ -28,7 +28,7 @@ install_file vimrc
 # $1 -> git address
 update_plugin() {
     lk=$1
-    dr=`echo ${lk%.*} | awk -F "\/" '{print $NF}'`
+    dr=`echo ${lk%.*} | awk -F "/" '{print $NF}'`
 
     echo "update $dr..."
 
